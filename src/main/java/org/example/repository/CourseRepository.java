@@ -2,15 +2,18 @@ package org.example.repository;
 
 import jakarta.persistence.criteria.Predicate;
 import org.example.contracts.entities.Course;
+
 import org.example.contracts.request.CourseRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-
+@Repository
 public interface CourseRepository  extends JpaRepository<Course, int>, JpaSpecificationExecutor<Course> {
     public static Specification<Course> filter(CourseRequest request) {
 
