@@ -1,15 +1,19 @@
 package org.example.contracts.request;
 
-import jakarta.persistence.*;
-import org.example.contracts.entities.User;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.math.BigDecimal;
 
-public class CourseRequest {
-    private int id;
+@Getter
+@Setter
+public class CourseRequest extends BaseRequest{
+    private Integer id;
     private String name;
+    private String username;
     private String description;
-    private User user;
-    private Set<User> users = new HashSet<>();
+    private Boolean isPaid;
+    private BigDecimal minPrice;
+    private BigDecimal maxPrice;
+    private Integer userId;
 }

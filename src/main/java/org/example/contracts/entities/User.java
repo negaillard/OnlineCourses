@@ -19,7 +19,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "passwordhash")
     private String passwordHash;
 
     @Column(nullable = false)
