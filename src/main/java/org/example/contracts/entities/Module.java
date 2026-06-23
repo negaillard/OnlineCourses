@@ -17,8 +17,14 @@ public class Module {
     @Column(nullable = true, length = 500)
     private String description;
 
+    @Column(name = "course_id")
+    private int courseId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id")
+    @JoinColumn(
+            name = "course_id",
+            insertable = false,
+            updatable = false
+    )
     private Course course;
 }
 

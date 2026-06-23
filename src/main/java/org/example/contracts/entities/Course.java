@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,15 +16,29 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false, unique = true)
+
+    @Column(nullable = false, length = 255)
     private String name;
-    @Column(nullable = true, length = 500)
+
+    @Column(nullable = false, length = 255)
+    private String username;
+
+    @Column(nullable = true, length = 4000)
     private String description;
 
+    @Column(nullable = true, length = 4000)
+    private Boolean isPaid = false;
+
+    @Column(precision = 19, scale = 2)
+    private BigDecimal price;
+
+    @Column(name = "user_id")
+    private int userId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-    // курсы не загружаются сразу, подгружаются только при вызове соотв. геттера (LAZY)
-    @ManyToMany(mappedBy = "courses")
-    private Set<User> users = new HashSet<>();
+    @JoinColumn(
+            name = "user_id",
+            insertable = false,
+            updatable = false
+    )
+    private User author;
 }

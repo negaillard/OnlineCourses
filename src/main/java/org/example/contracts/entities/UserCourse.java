@@ -5,36 +5,38 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "user_lessons")
+@Table(name = "user_courses")
 @Getter
 @Setter
-public class UserLesson {
+public class UserCourse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "user_id", nullable = false)
     private int userId;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name = "user_id",
-            nullable = false,
             insertable = false,
             updatable = false
     )
     private User user;
 
-    @Column(name = "lesson_id", nullable = false)
-    private int lessonId;
-    @ManyToOne
+    @Column(name = "course_id", nullable = false)
+    private int courseId;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
-            name = "lesson_id",
-            nullable = false,
+            name = "course_id",
             insertable = false,
             updatable = false
     )
-    private Lesson lesson;
+    private Course course;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private UserCourseStatus status;
 
     @Column(nullable = false)
-    private Boolean checked;
+    private Integer progress = 0;
 }
