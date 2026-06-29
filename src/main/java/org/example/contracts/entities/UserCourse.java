@@ -3,6 +3,9 @@ package org.example.contracts.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.contracts.binding.UserCourseBinding;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "user_courses")
@@ -39,4 +42,10 @@ public class UserCourse {
 
     @Column(nullable = false)
     private Integer progress = 0;
+
+    public void update(UserCourseBinding model) {
+        Objects.requireNonNull(model, "UserCourseBinding must not be null");
+        this.progress = model.progress();
+        this.status = model.status();
+    }
 }

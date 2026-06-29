@@ -3,6 +3,10 @@ package org.example.contracts.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.contracts.binding.ModuleBinding;
+import org.example.contracts.binding.UserBinding;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "modules")
@@ -26,5 +30,11 @@ public class Module {
             updatable = false
     )
     private Course course;
+
+    public void update(ModuleBinding model) {
+        Objects.requireNonNull(model, "ModuleBinding must not be null");
+        this.name = model.name();
+        this.description = model.description();
+    }
 }
 

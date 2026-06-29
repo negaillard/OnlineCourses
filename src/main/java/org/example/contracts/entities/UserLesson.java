@@ -3,6 +3,10 @@ package org.example.contracts.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.contracts.binding.UserLessonBinding;
+
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "user_lessons")
@@ -37,4 +41,9 @@ public class UserLesson {
 
     @Column(nullable = false)
     private Boolean checked;
+
+    public void update(UserLessonBinding model) {
+        Objects.requireNonNull(model, "UserLessonBinding must not be null");
+        this.checked = model.checked();
+    }
 }

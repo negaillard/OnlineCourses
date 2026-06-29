@@ -3,9 +3,12 @@ package org.example.contracts.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.contracts.binding.CourseBinding;
+import org.example.contracts.binding.UserBinding;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -41,4 +44,10 @@ public class Course {
             updatable = false
     )
     private User author;
+
+    public void update(CourseBinding model) {
+        Objects.requireNonNull(model, "CourseBinding must not be null");
+        this.name = model.username();
+        this.description = model.description();
+    }
 }

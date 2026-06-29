@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import org.example.contracts.binding.UserBinding;
+
+import java.util.Objects;
+
 @Entity
 @Table(name = "users")
 @Getter
@@ -27,4 +31,12 @@ public class User {
 
     @Column(length = 255)
     private String bill;
+
+    public void update(UserBinding model) {
+        Objects.requireNonNull(model, "UserBinding must not be null");
+        this.username = model.username();
+        this.email = model.email();
+        this.isAdmin = model.isAdmin();
+        this.bill = model.bill();
+    }
 }
