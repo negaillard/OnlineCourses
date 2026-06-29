@@ -1,9 +1,6 @@
 package org.example.contracts.binding;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import org.example.contracts.entities.Module;
-
 import java.time.LocalDateTime;
 
 public record LessonBinding (

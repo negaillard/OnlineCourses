@@ -1,11 +1,12 @@
 package org.example.contracts.binding;
 
-import jakarta.persistence.*;
-import org.example.contracts.entities.Course;
+import jakarta.validation.constraints.NotBlank;
 
 public record ModuleBinding (
     int id,
+    @NotBlank
     String name,
+    @NotBlank
     String description,
     int courseId)
 {}

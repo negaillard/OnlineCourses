@@ -1,4 +1,4 @@
 package org.example.contracts.response;
 
-public class ModuleResponse {
+public record ModuleResponse () {
 }

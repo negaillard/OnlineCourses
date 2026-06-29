@@ -12,6 +12,7 @@ public record CourseBinding (
     String name,
     @NotBlank
     String username,
+    @NotBlank
     String description,
     Boolean isPaid,
     BigDecimal price,

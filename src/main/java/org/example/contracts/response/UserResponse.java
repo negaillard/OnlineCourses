@@ -1,4 +1,9 @@
 package org.example.contracts.response;
 
-public class UserResponse {
-}
+public record UserResponse (
+    Integer id,
+    String username,
+    String email,
+    Boolean isAdmin,
+    String bill)
+{ }

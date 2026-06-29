@@ -16,8 +16,6 @@ public abstract class BaseRequest {
 
     private String sortField;
 
-    private Sort.Direction sortDirection = Sort.Direction.ASC;
-
     public Pageable toPageable() {
 
         return PageRequest.of(
